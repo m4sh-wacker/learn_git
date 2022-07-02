@@ -1,2 +1,2 @@
 # learn_git
-learn git - git flow -git hub
+learn git - git flow - git hub
