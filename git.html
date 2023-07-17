@@ -1,54 +1,176 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>learn git</title>
+    <title>Learn Git</title>
+    <style>
+        body {
+            background-size: cover;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-align: center;
+            color: #002fdb;
+            font-size: 40px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        h3 {
+            background-color: #19ebfa;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        h3:hover {
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+            zoom: 120%;
+        }
+
+        pre {
+            background-image: url(img/bg.jpg);              
+            background-color: #efefef;
+            padding: 30px;
+            border-radius: 5px;
+            font-family: Consolas, monospace;
+            line-height: 1.5;
+        }
+
+        pre:hover {
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+            zoom: 120%;
+        }
+
+        code {
+            display: block;
+            color: #fc3f00;
+            font-weight: bold;
+            text-shadow: #333;
+            font-size: 13px;
+        }
+
+        .git-logo {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -120%;
+            left: 80%;
+            transform: translateX(-20%);
+            background-color: #af45f5;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 3px;
+            font-size: 11px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0s;
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var tooltips = document.querySelectorAll('.tooltip');
+            for (var i = 0; i < tooltips.length; i++) {
+                tooltips[i].addEventListener('mouseenter', function() {
+                    var tooltip = this.querySelector('.tooltip-popup');
+                    tooltip.style.opacity = 1;
+                    tooltip.style.transform = 'translateY(0)';
+                });
+                tooltips[i].addEventListener('mouseleave', function() {
+                    var tooltip = this.querySelector('.tooltip-popup');
+                    tooltip.style.opacity = 0;
+                    tooltip.style.transform = 'translateY(-10px)';
+                });
+            }
+        });
+    </script>
 </head>
 
-<body style="background-image: url('img/background.jpg') ; margin-left: 7%;">
-
-    <h3>
-        <p style="text-align:center; font-size: 30px; background-color: yellow; opacity:80% ;border-radius: 7px;">git</p>
-        git config --global user.name/user.email
-        <br/> git init = start git
-        <br/> git status
-        <br/> git add *.regex or -A for add all
-        <br/> git commit -m = 'comment'
-        <br/> git log / glola
-        <br/> git diff HEAD ------------------> diff=view edit files
-        <br/> git diff --staged
-        <br/> git reset (file name) ---------- all files commit and file reset unstage
-        <br/> git checkout -- (file name) --------------- reset file last commit
-        <br/> git branch ---------- status branch / git branch -a --------> show all branch server and local
-        <br/> git branch (branch name) --------------- new branch
-        <br/> git checkout (branch name) ---------- switch branch
-        <br/> git merge (branch name) ---------- merge branch
-        <br/> git merge -d (branch name) ---------- delete merge branch
-        <br/> git clone (link) ---------- clone project (download)
-        <br/> git push origin master(branch name) ---> user/pass for push ---------- local to server
-        <br/> git pull origin master(branch name) ---------- server to local
-        <br/> git remote ---------- show remotes
-        <br/> git remote add origin (link) ---> add remote
-        <br/> git remote -v ---> show link pull/push
-        <br/> git push origin master(branch name) ---------- origin ---> link remotes
-        <br/> git show (coomit hash string)/(tag name)
-        <br/> git tag ----------show tags
-        <br/> git tag -a version(name) -m 'comment'
-        <br/> git tag -a version(name) (commit hash string)
-        <br/> git push origin version(tag name) ---------- push tag to origin
-        <br/> git help (command) ---------- show help command
-        <br/> git blame (file name) ---------- who has chenged file
-        <br/> git blame (file name) -L number ---------- -L(line)
-        <br/> git bisect --------------- fix bug => binery search commit
-        <br/> bisect start -> bisect bad -> bisect good hash string commit (git log)
-        <p style="text-align:center; font-size: 30px; background-color: yellow; opacity:80% ;border-radius: 7px;">git flow</p>
-        <br/> apt install git-flow -------------- install git flow on linux
-        <br/> git flow init ---------- start git flow
-        <br/> git flow (branch moodle) (command) (name)
-        <br/> branch moodle --> feature-bugfix-release-hotfix-support
-        <br/> commamd --> start-finishs-publish-pull-track
-        <br/> git flow (branch moodle) publish (name) -------- push=publish
-        <br/> git flow (branch moodle) pull (name)
-    </h3>
+<body>
+    <div class="container">
+        <h1>Learn Git</h1>
+        <img class="git-logo" src="img/logo.png" alt="Git" data-tooltip="This is the Git logo.">
+        <h3>Git Commands</h3>
+        <pre>
+            <code>
+                <span class="tooltip" data-tooltip="Install git on Linux.">apt install git</span>
+                <span class="tooltip" data-tooltip="Set the global user name and email for Git.">git config --global user.name/user.email</span>
+                <span class="tooltip" data-tooltip="Initialize a new Git repository.">git init</span>
+                <span class="tooltip" data-tooltip="Show the working tree status.">git status</span>
+                <span class="tooltip" data-tooltip="Add files to the staging area. Use '*.regex' or '-A' to add all files.">git add</span>
+                <span class="tooltip" data-tooltip="Commit changes with a message.">git commit -m</span>
+                <span class="tooltip" data-tooltip="Show commit history.">git log</span>
+                <span class="tooltip" data-tooltip="Show the difference between the working tree and the HEAD commit.">git diff HEAD</span>
+                <span class="tooltip" data-tooltip="Show the difference between the staging area and the HEAD commit.">git diff --staged</span>
+                <span class="tooltip" data-tooltip="Unstage a file.">git reset</span>
+                <span class="tooltip" data-tooltip="Discard changes in a file and restore it to the last committed state.">git checkout</span>
+                <span class="tooltip" data-tooltip="Show current branches.">git branch</span>
+                <span class="tooltip" data-tooltip="Create a new branch.">git branch</span>
+                <span class="tooltip" data-tooltip="Switch to a different branch.">git checkout</span>
+                <span class="tooltip" data-tooltip="Merge a branch into the current branch.">git merge</span>
+                <span class="tooltip" data-tooltip="Delete a merged branch.">git branch -d</span>
+                <span class="tooltip" data-tooltip="Clone a repository from a remote server.">git clone</span>
+                <span class="tooltip" data-tooltip="Push changes from the local branch to the remote repository.">git push origin</span>
+                <span class="tooltip" data-tooltip="Pull changes from the remote repository to the local branch.">git pull origin</span>
+                <span class="tooltip" data-tooltip="Show remote repositories.">git remote</span>
+                <span class="tooltip" data-tooltip="Add a remote repository.">git remote add origin</span>
+                <span class="tooltip" data-tooltip="Show the remote repository URLs.">git remote -v</span>
+                <span class="tooltip" data-tooltip="Push a tag to the remote repository.">git push origin</span>
+                <span class="tooltip" data-tooltip="Show information about a commit or a tag.">git show</span>
+                <span class="tooltip" data-tooltip="Show existing tags.">git tag</span>
+                <span class="tooltip" data-tooltip="Create a new tag with a message.">git tag -a version(name) -m 'comment'</span>
+                <span class="tooltip" data-tooltip="Create a new tag for a specific commit.">git tag -a version(name) (commit hash string)</span>
+                <span class="tooltip" data-tooltip="Push a tag to the remote repository.">git push origin</span>
+                <span class="tooltip" data-tooltip="Show help for a command.">git help</span>
+                <span class="tooltip" data-tooltip="Show who changed a file.">git blame</span>
+                <span class="tooltip" data-tooltip="Show who changed a specific line in a file.">git blame</span>
+                <span class="tooltip" data-tooltip="Find a specific commit that introduced a bug.">git bisect</span>
+            </code>
+        </pre>
+        <h3>Git Flow Commands</h3>
+        <pre>
+            <code>
+                <span class="tooltip" data-tooltip="Install git flow on Linux.">apt install git-flow</span>
+                <span class="tooltip" data-tooltip="Start git flow.">git flow init</span>
+                <span class="tooltip" data-tooltip="Perform a git flow command on a specific branch with a given name.">git flow (branch moodle) (command) (name)</span>
+                <span class="tooltip" data-tooltip="Branches in git flow: feature, bugfix, release, hotfix, support.">branch moodle -&gt; feature-bugfix-release-hotfix-support</span>
+                <span class="tooltip" data-tooltip="Commands in git flow: start, finish, publish, pull, track.">commamd -&gt; start-finishs-publish-pull-track</span>
+                <span class="tooltip" data-tooltip="Publish a feature branch.">git flow (branch moodle) publish (name)</span>
+                <span class="tooltip" data-tooltip="Pull updates from a remote feature branch.">git flow (branch moodle) pull (name)</span>
+            </code>
+        </pre>
+    </div>
 </body>
 
 </html>
